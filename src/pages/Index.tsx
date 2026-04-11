@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { emergencyScenarios, EmergencyScenario } from "@/data/emergencyScenarios";
 import { EmergencyCard } from "@/components/EmergencyCard";
 import { GuidedEmergency } from "@/components/GuidedEmergency";
-import { Shield, Phone, AlertTriangle } from "lucide-react";
+import { Shield, Phone, AlertTriangle, Activity } from "lucide-react";
 
 export default function Index() {
   const [activeScenario, setActiveScenario] = useState<EmergencyScenario | null>(null);
+  const [pulse, setPulse] = useState(false);
+
+  // Heartbeat pulse effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPulse(true);
+      setTimeout(() => setPulse(false), 300);
+    }, 1200);
+    return () => clearInterval(interval);
+  }, []);
 
   if (activeScenario) {
     return (
@@ -16,58 +26,81 @@ export default function Index() {
     );
   }
 
-  // "I don't know what's happening" → defaults to CPR (most critical)
   const panicScenario = emergencyScenarios.find((s) => s.id === "cpr")!;
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Header */}
-      <div className="relative overflow-hidden">
-        {/* Layered ambient glow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-critical/12 via-critical/4 to-transparent pointer-events-none" />
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-critical/8 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-10 -right-20 w-[200px] h-[200px] bg-warning/6 rounded-full blur-[80px] pointer-events-none" />
+      {/* Hero Header — full visual impact */}
+      <div className="relative overflow-hidden pb-2">
+        {/* Dramatic multi-layer glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-critical/20 via-critical/5 to-transparent pointer-events-none" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-critical/10 rounded-full blur-[150px] pointer-events-none animate-pulse" />
+        <div className="absolute top-20 -left-32 w-[250px] h-[250px] bg-primary/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 -right-20 w-[200px] h-[200px] bg-warning/6 rounded-full blur-[80px] pointer-events-none" />
         
-        <div className="relative px-5 pt-14 pb-6">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              {/* Logo mark */}
-              <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-critical to-critical/60 flex items-center justify-center shadow-lg shadow-critical/25">
-                <span className="text-critical-foreground font-display font-bold text-xl">R</span>
-                <div className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-safe breathe" />
-              </div>
-              <div>
-                <h1 className="font-display font-bold text-3xl text-foreground tracking-tight">
-                  Reflexa
-                </h1>
-                <p className="text-[10px] text-primary font-bold tracking-[0.25em] uppercase mt-0.5">
-                  Instant Survival Guide
-                </p>
-              </div>
+        {/* Subtle grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
+            backgroundSize: '24px 24px'
+          }}
+        />
+
+        <div className="relative px-5 pt-12 pb-6">
+          {/* Top bar with 911 */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Activity className="w-4 h-4 text-safe" />
+              <span className="text-[11px] font-medium tracking-wide uppercase">System Active</span>
             </div>
             <a
               href="tel:911"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-critical text-critical-foreground font-display font-bold text-sm pulse-emergency active:scale-95 transition-transform shadow-lg shadow-critical/30"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-critical text-critical-foreground font-display font-bold text-sm pulse-emergency active:scale-95 transition-transform shadow-lg shadow-critical/40"
             >
               <Phone className="w-4 h-4" />
               911
             </a>
           </div>
 
-          {/* Panic Big Button */}
+          {/* Brand block */}
+          <div className="flex items-center gap-4 mb-3">
+            <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br from-critical via-critical/80 to-critical/50 flex items-center justify-center transition-all duration-300 ${pulse ? 'shadow-[0_0_40px_rgba(220,38,38,0.5)] scale-105' : 'shadow-lg shadow-critical/25 scale-100'}`}>
+              <span className="text-critical-foreground font-display font-bold text-3xl">R</span>
+              <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-safe border-2 border-background breathe" />
+            </div>
+            <div>
+              <h1 className="font-display font-bold text-4xl text-foreground tracking-tight leading-none">
+                Reflexa
+              </h1>
+              <div className="flex items-center gap-2 mt-1.5">
+                <div className="h-px w-6 bg-gradient-to-r from-critical to-transparent" />
+                <p className="text-[10px] text-primary font-bold tracking-[0.3em] uppercase">
+                  Instant Survival Guide
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-[300px]">
+            Real-time voice guidance that <span className="text-foreground font-medium">adapts to your panic level</span> and keeps you alive.
+          </p>
+
+          {/* Panic Big Button — maximum urgency */}
           <button
             onClick={() => setActiveScenario(panicScenario)}
-            className="w-full p-5 rounded-2xl border-2 border-critical/40 bg-critical/10 active:scale-[0.97] transition-all duration-200 glow-critical mb-4"
+            className="group w-full p-5 rounded-2xl border-2 border-critical/50 bg-gradient-to-r from-critical/15 via-critical/10 to-critical/5 active:scale-[0.97] transition-all duration-200 glow-critical mb-4 relative overflow-hidden"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-critical/20 flex items-center justify-center shrink-0">
-                <AlertTriangle className="w-6 h-6 text-critical" />
+            <div className="absolute inset-0 bg-gradient-to-r from-critical/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative flex items-center gap-4">
+              <div className={`w-14 h-14 rounded-xl bg-critical/20 flex items-center justify-center shrink-0 transition-all duration-300 ${pulse ? 'bg-critical/30' : ''}`}>
+                <AlertTriangle className="w-7 h-7 text-critical" />
               </div>
               <div className="text-left">
-                <p className="font-display font-bold text-lg text-critical">
+                <p className="font-display font-bold text-xl text-critical tracking-tight">
                   I DON'T KNOW WHAT TO DO
                 </p>
-                <p className="text-xs text-critical/70 mt-0.5">
+                <p className="text-xs text-critical/60 mt-1 font-medium">
                   Tap here — we'll guide you step by step
                 </p>
               </div>
@@ -75,10 +108,12 @@ export default function Index() {
           </button>
 
           {/* Info strip */}
-          <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-secondary/60 border border-border">
-            <Shield className="w-4 h-4 text-safe shrink-0" />
+          <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-card/80 border border-border/60 backdrop-blur-sm">
+            <div className="w-7 h-7 rounded-lg bg-safe/10 flex items-center justify-center shrink-0">
+              <Shield className="w-3.5 h-3.5 text-safe" />
+            </div>
             <p className="text-[11px] text-muted-foreground leading-relaxed">
-              <span className="text-foreground font-semibold">Hands-free voice guidance</span> that adapts to your stress level
+              <span className="text-foreground font-semibold">Hands-free voice</span> · Adapts to stress · Works offline
             </p>
           </div>
         </div>
