@@ -86,9 +86,8 @@ export default function Index() {
             Go from zero to life-saver<br />
             <span className="text-primary">in 10 seconds.</span>
           </p>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-[300px]">
-            Voice-guided instructions that adapt to your panic level in real-time.
-          </p>
+
+
 
           {/* Panic Big Button — maximum urgency */}
           <button
