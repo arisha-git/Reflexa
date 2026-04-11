@@ -3,6 +3,7 @@ import { emergencyScenarios, EmergencyScenario } from "@/data/emergencyScenarios
 import { EmergencyCard } from "@/components/EmergencyCard";
 import { GuidedEmergency } from "@/components/GuidedEmergency";
 import { Shield, Phone, AlertTriangle, Activity } from "lucide-react";
+import reflexaLogo from "@/assets/reflexa-logo.png";
 
 export default function Index() {
   const [activeScenario, setActiveScenario] = useState<EmergencyScenario | null>(null);
@@ -64,8 +65,8 @@ export default function Index() {
 
           {/* Brand block */}
           <div className="flex items-center gap-4 mb-3">
-            <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br from-critical via-critical/80 to-critical/50 flex items-center justify-center transition-all duration-300 ${pulse ? 'shadow-[0_0_40px_rgba(220,38,38,0.5)] scale-105' : 'shadow-lg shadow-critical/25 scale-100'}`}>
-              <span className="text-critical-foreground font-display font-bold text-3xl">R</span>
+            <div className={`relative w-16 h-16 rounded-2xl overflow-hidden transition-all duration-300 ${pulse ? 'shadow-[0_0_40px_rgba(220,38,38,0.5)] scale-105' : 'shadow-lg shadow-critical/25 scale-100'}`}>
+              <img src={reflexaLogo} alt="Reflexa logo" width={64} height={64} className="w-full h-full object-contain" />
               <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-safe border-2 border-background breathe" />
             </div>
             <div>
