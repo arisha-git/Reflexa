@@ -81,9 +81,13 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Tagline */}
+          {/* Hero tagline */}
+          <p className="text-lg text-foreground font-display font-bold leading-snug mb-1 max-w-[320px]">
+            Go from zero to life-saver<br />
+            <span className="text-primary">in 10 seconds.</span>
+          </p>
           <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-[300px]">
-            Real-time voice guidance that <span className="text-foreground font-medium">adapts to your panic level</span> and keeps you alive.
+            Voice-guided instructions that adapt to your panic level in real-time.
           </p>
 
           {/* Panic Big Button — maximum urgency */}
