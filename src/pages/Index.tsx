@@ -23,22 +23,31 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       {/* Hero Header */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-critical/8 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-critical/5 rounded-full blur-[100px] pointer-events-none" />
+        {/* Layered ambient glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-critical/12 via-critical/4 to-transparent pointer-events-none" />
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-critical/8 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-10 -right-20 w-[200px] h-[200px] bg-warning/6 rounded-full blur-[80px] pointer-events-none" />
         
         <div className="relative px-5 pt-14 pb-6">
           <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="font-display font-bold text-3xl text-foreground tracking-tight">
-                Reflexa
-              </h1>
-              <p className="text-xs text-primary font-semibold tracking-[0.2em] uppercase mt-0.5">
-                Instant Survival Guide
-              </p>
+            <div className="flex items-center gap-3">
+              {/* Logo mark */}
+              <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-critical to-critical/60 flex items-center justify-center shadow-lg shadow-critical/25">
+                <span className="text-critical-foreground font-display font-bold text-xl">R</span>
+                <div className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-safe breathe" />
+              </div>
+              <div>
+                <h1 className="font-display font-bold text-3xl text-foreground tracking-tight">
+                  Reflexa
+                </h1>
+                <p className="text-[10px] text-primary font-bold tracking-[0.25em] uppercase mt-0.5">
+                  Instant Survival Guide
+                </p>
+              </div>
             </div>
             <a
               href="tel:911"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-critical text-critical-foreground font-display font-bold text-sm pulse-emergency active:scale-95 transition-transform"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-critical text-critical-foreground font-display font-bold text-sm pulse-emergency active:scale-95 transition-transform shadow-lg shadow-critical/30"
             >
               <Phone className="w-4 h-4" />
               911
