@@ -65,7 +65,7 @@ export default function Index() {
 
           {/* Brand block */}
           <div className="flex items-center gap-4 mb-3">
-            <div className={`relative w-16 h-16 rounded-2xl overflow-hidden transition-all duration-300 ${pulse ? 'shadow-[0_0_40px_rgba(220,38,38,0.5)] scale-105' : 'shadow-lg shadow-critical/25 scale-100'}`}>
+            <div className={`relative w-16 h-16 transition-all duration-300 ${pulse ? 'drop-shadow-[0_0_20px_rgba(220,38,38,0.5)] scale-105' : 'scale-100'}`}>
               <img src={reflexaLogo} alt="Reflexa logo" width={64} height={64} className="w-full h-full object-contain" />
               <div className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-safe border-2 border-background breathe" />
             </div>
