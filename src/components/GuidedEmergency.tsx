@@ -90,7 +90,7 @@ export function GuidedEmergency({ scenario, onExit }: Props) {
         <div className="flex items-center gap-2">
           <span className="text-2xl">{scenario.icon}</span>
           <span className="font-display font-bold text-foreground">
-            {scenario.title}
+            Reflexa — {scenario.title}
           </span>
         </div>
         <button
