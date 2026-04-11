@@ -82,7 +82,7 @@ export default function Index() {
           </div>
 
           {/* Hero tagline */}
-          <p className="text-lg text-foreground font-display font-bold leading-snug mb-1 max-w-[320px]">
+          <p className="text-lg text-foreground font-display font-bold leading-snug mb-5 max-w-[320px]">
             Go from zero to life-saver<br />
             <span className="text-primary">in 10 seconds.</span>
           </p>
