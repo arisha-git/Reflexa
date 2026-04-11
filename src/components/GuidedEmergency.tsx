@@ -2,11 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import { EmergencyScenario } from "@/data/emergencyScenarios";
 import { useVoice } from "@/hooks/useVoice";
 import { usePanicDetector, PanicLevel } from "@/hooks/usePanicDetector";
-import { ArrowLeft, ArrowRight, Phone, Volume2, VolumeX } from "lucide-react";
+import { LocationData } from "@/hooks/useGeolocation";
+import { ArrowLeft, ArrowRight, Phone, Volume2, VolumeX, MapPin, Share2 } from "lucide-react";
 
 interface Props {
   scenario: EmergencyScenario;
   onExit: () => void;
+  emergencyDescription?: string;
+  emergencyLocation?: LocationData | null;
 }
 
 const panicColors: Record<PanicLevel, string> = {
@@ -21,7 +24,7 @@ const panicLabels: Record<PanicLevel, string> = {
   panicking: "BREATHE. Follow the steps.",
 };
 
-export function GuidedEmergency({ scenario, onExit }: Props) {
+export function GuidedEmergency({ scenario, onExit, emergencyDescription, emergencyLocation }: Props) {
   const [currentStep, setCurrentStep] = useState(0);
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const [showSimplified, setShowSimplified] = useState(false);
@@ -42,7 +45,7 @@ export function GuidedEmergency({ scenario, onExit }: Props) {
     }
   }, [panicLevel, step.simplifiedInstruction, voiceEnabled, speak]);
 
-  // Speak instruction on step change
+  // Speak instruction on step change — ALWAYS auto-speak
   useEffect(() => {
     if (voiceEnabled) {
       const text = showSimplified ? step.simplifiedInstruction : step.instruction;
@@ -72,6 +75,17 @@ export function GuidedEmergency({ scenario, onExit }: Props) {
     onExit();
   }, [stop, reset, onExit]);
 
+  const shareLocation = useCallback(() => {
+    if (!emergencyLocation) return;
+    const alertText = `REFLEXA ALERT 🚨\nEmergency: ${scenario.title}\n${emergencyDescription ? `Description: ${emergencyDescription}\n` : ""}Live location:\n${emergencyLocation.mapsLink}`;
+    
+    if (navigator.share) {
+      navigator.share({ title: "🚨 REFLEXA EMERGENCY", text: alertText, url: emergencyLocation.mapsLink }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(alertText);
+    }
+  }, [emergencyLocation, scenario.title, emergencyDescription]);
+
   const displayInstruction = showSimplified
     ? step.simplifiedInstruction
     : step.instruction;
@@ -90,19 +104,48 @@ export function GuidedEmergency({ scenario, onExit }: Props) {
         <div className="flex items-center gap-2">
           <span className="text-2xl">{scenario.icon}</span>
           <span className="font-display font-bold text-foreground">
-            Reflexa — {scenario.title}
+            {scenario.title}
           </span>
         </div>
-        <button
-          onClick={() => {
-            setVoiceEnabled(!voiceEnabled);
-            if (voiceEnabled) stop();
-          }}
-          className="p-2 rounded-lg bg-secondary text-secondary-foreground"
-        >
-          {voiceEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-1">
+          {emergencyLocation && (
+            <button
+              onClick={shareLocation}
+              className="p-2 rounded-lg bg-safe/20 text-safe"
+              title="Share location"
+            >
+              <Share2 className="w-4 h-4" />
+            </button>
+          )}
+          <button
+            onClick={() => {
+              setVoiceEnabled(!voiceEnabled);
+              if (voiceEnabled) stop();
+            }}
+            className="p-2 rounded-lg bg-secondary text-secondary-foreground"
+          >
+            {voiceEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Location bar */}
+      {emergencyLocation && (
+        <div className="px-4 py-2 bg-safe/10 border-b border-safe/20 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs text-safe">
+            <MapPin className="w-3 h-3" />
+            <span>Location captured & ready to share</span>
+          </div>
+          <a
+            href={emergencyLocation.mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-safe underline"
+          >
+            View map
+          </a>
+        </div>
+      )}
 
       {/* Progress */}
       <div className="px-4 pt-4">
