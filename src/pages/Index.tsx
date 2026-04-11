@@ -3,6 +3,7 @@ import { emergencyScenarios, EmergencyScenario } from "@/data/emergencyScenarios
 import { EmergencyCard } from "@/components/EmergencyCard";
 import { GuidedEmergency } from "@/components/GuidedEmergency";
 import { Shield, Phone, AlertTriangle, Activity } from "lucide-react";
+import reflexaLogo from "@/assets/reflexa-logo.png";
 
 export default function Index() {
   const [activeScenario, setActiveScenario] = useState<EmergencyScenario | null>(null);
