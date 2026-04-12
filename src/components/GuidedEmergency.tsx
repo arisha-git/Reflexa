@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { EmergencyScenario } from "@/data/emergencyScenarios";
+import { stepImages } from "@/data/emergencyImages";
 import { useVoice } from "@/hooks/useVoice";
 import { usePanicDetector, PanicLevel } from "@/hooks/usePanicDetector";
 import { LocationData } from "@/hooks/useGeolocation";
-import { ArrowLeft, ArrowRight, Phone, Volume2, VolumeX, MapPin, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Phone, Volume2, VolumeX, MapPin, Share2, Image } from "lucide-react";
 
 interface Props {
   scenario: EmergencyScenario;
@@ -172,7 +173,23 @@ export function GuidedEmergency({ scenario, onExit, emergencyDescription, emerge
       </div>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col justify-center px-4 py-6">
+      <div className="flex-1 flex flex-col justify-center px-4 py-6 overflow-y-auto">
+        {/* Visual aid image */}
+        {stepImages[scenario.id]?.[currentStep] && (
+          <div className="mb-4 rounded-2xl overflow-hidden border border-border bg-white">
+            <img
+              src={stepImages[scenario.id][currentStep]}
+              alt={`Visual guide: ${step.instruction}`}
+              className="w-full h-48 object-contain"
+              loading="lazy"
+            />
+            <div className="px-3 py-1.5 bg-muted/50 flex items-center gap-1.5">
+              <Image className="w-3 h-3 text-muted-foreground" />
+              <span className="text-[10px] text-muted-foreground font-medium">Visual Guide</span>
+            </div>
+          </div>
+        )}
+
         <div
           className={`p-6 rounded-2xl border-2 transition-all duration-500 ${panicColors[panicLevel]} bg-card`}
           onClick={() => recordInteraction()}
