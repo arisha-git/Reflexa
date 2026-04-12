@@ -1,3 +1,28 @@
+## Problem
+
+Imagine you’re in a situation where someone suddenly collapses in front of you.  
+You want to help, but you don’t know what to do.
+
+In emergencies, even a few seconds of hesitation can cost lives.  
+The problem isn’t that people don’t care — it’s that they lack the knowledge and confidence to act instantly.
+
+---
+
+## Solution
+
+That’s why we built **Reflexa** — an AI-powered emergency response assistant.
+
+Reflexa:
+- Guides users step-by-step in real time  
+- Provides clear, immediate instructions  
+- Reduces panic and hesitation  
+- Helps untrained individuals take action instantly  
+
+---
+
+## Vision
+
+
 ## Technical Overview
 
 From a technical perspective, **Reflexa** is built on AI-driven logic that interprets user input and generates situation-specific emergency guidance. We researched and integrated relevant APIs to improve response accuracy while maintaining fast processing speeds.
