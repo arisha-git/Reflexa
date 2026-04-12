@@ -1,12 +1,18 @@
-## Problem
+## 🚀 How Reflexa Works
 
-Imagine you’re in a situation where someone suddenly collapses in front of you.  
-You want to help, but you don’t know what to do.
-
-In emergencies, even a few seconds of hesitation can cost lives.  
-The problem isn’t that people don’t care — it’s that they lack the knowledge and confidence to act instantly.
+When a user opens Reflexa, they can select or describe the emergency. The system instantly identifies the situation and provides clear, step-by-step guidance—whether it’s CPR, choking, or other cases.
 
 ---
+
+## ⚡ Focus
+
+Built for **speed and simplicity**, Reflexa uses a minimal, distraction-free interface to help users act immediately without overthinking.
+
+---
+
+## 🎯 Result
+
+Enables anyone to respond **quickly and confidently** in critical situations.
 
 ## Solution
 
