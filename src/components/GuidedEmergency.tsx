@@ -176,17 +176,16 @@ export function GuidedEmergency({ scenario, onExit, emergencyDescription, emerge
       <div className="flex-1 flex flex-col justify-center px-4 py-6 overflow-y-auto">
         {/* Visual aid image */}
         {stepImages[scenario.id]?.[currentStep] && (
-          <div className="mb-4 rounded-2xl overflow-hidden border border-border bg-white">
+          <div className="mb-3 flex items-center gap-3 rounded-xl overflow-hidden border border-border bg-white p-2">
             <img
               src={stepImages[scenario.id][currentStep]}
               alt={`Visual guide: ${step.instruction}`}
-              className="w-full h-48 object-contain"
+              className="w-20 h-20 object-contain rounded-lg flex-shrink-0"
               loading="lazy"
             />
-            <div className="px-3 py-1.5 bg-muted/50 flex items-center gap-1.5">
-              <Image className="w-3 h-3 text-muted-foreground" />
-              <span className="text-[10px] text-muted-foreground font-medium">Visual Guide</span>
-            </div>
+            <p className="text-xs text-muted-foreground leading-snug">
+              See visual guide →
+            </p>
           </div>
         )}
 
