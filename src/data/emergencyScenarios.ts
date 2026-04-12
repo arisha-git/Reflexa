@@ -4,6 +4,7 @@ export interface EmergencyStep {
   simplifiedInstruction: string; // shown if user hesitates
   criticalWarning?: string;
   duration?: number; // expected seconds for this step
+  image?: string; // path to visual aid image
 }
 
 export interface EmergencyScenario {
