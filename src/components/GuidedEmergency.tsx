@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { EmergencyScenario } from "@/data/emergencyScenarios";
+import { stepImages } from "@/data/emergencyImages";
 import { useVoice } from "@/hooks/useVoice";
 import { usePanicDetector, PanicLevel } from "@/hooks/usePanicDetector";
 import { LocationData } from "@/hooks/useGeolocation";
-import { ArrowLeft, ArrowRight, Phone, Volume2, VolumeX, MapPin, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Phone, Volume2, VolumeX, MapPin, Share2, Image } from "lucide-react";
 
 interface Props {
   scenario: EmergencyScenario;
