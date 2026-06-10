@@ -1,178 +1,108 @@
-# 🚑 Reflexa — Digital First Aid
+# 🚨 Reflexa
 
-> **Teach someone to act in 10 seconds.**
+Reflexa is an emergency assistance platform designed to guide users through critical situations when every second matters.
 
-Reflexa is an **Emergency response system** that delivers **real-time, adaptive, step-by-step guidance** during critical situations—enabling users to take immediate action even without prior training.
+In moments of panic, people often struggle to remember emergency procedures or make informed decisions. Reflexa provides instant, easy-to-follow guidance for common emergencies, helping users take action quickly and confidently.
 
----
+## Problem Statement
 
-## 🔥 Problem
+During emergencies such as choking, burns, bleeding, unconsciousness, or breathing difficulties, many people do not know what steps to take before professional help arrives.
 
-In emergency situations, people often **freeze or hesitate**—not due to lack of concern, but due to **lack of knowledge and clarity**.
+Reflexa aims to bridge this gap by providing immediate guidance, emergency detection tools, and quick access to assistance when time is critical.
 
-Existing solutions:
-- Require prior training  
-- Provide static, non-interactive information  
-- Are difficult to use under stress  
+## Features
 
----
+### 🎙️ Voice-Based Emergency Detection
 
-## 💡 Solution
+Users can describe what is happening using voice input, allowing hands-free interaction during stressful situations.
 
-FemTech introduces **Reflexa** — a system that:
-- Detects emergency situations instantly  
-- Provides **ultra-compressed, actionable steps**  
-- Adapts instructions based on user interaction  
+### 📍 Location Awareness
 
-> Instead of learning beforehand, users are guided **in real-time**.
+The platform can access the user's location to provide context-aware emergency assistance and facilitate emergency response.
 
----
+### 🚑 Emergency Guidance
 
-## ⚙️ How It Works
-User Input (Voice / Text / Buttons) → Emergency Detection → AI Classification → Skill Injection Engine → Step-by-Step Guidance → Adaptive Feedback Loop
+Provides clear, step-by-step instructions for handling different emergency situations.
 
----
+### 📞 One-Tap Emergency Calling
 
-## 🚀 Features
+Quick access to emergency services through a dedicated emergency call button.
 
-### 🎤 Multi-Modal Input
-- Voice-based emergency detection  
-- Text input fallback  
-- Quick-access emergency buttons  
+### 📷 Camera-Based Assistance
 
----
+Users can use their device camera when voice input is not practical, enabling alternative methods of emergency assessment.
 
-### 🧠 AI-Powered Emergency Classification
-- Identifies type of emergency (medical, fire, accident)  
-- Determines urgency and severity  
-- Converts user input into actionable scenarios  
+### 🧠 Stress-Friendly Interface
 
----
+Designed with a simple and focused interface that minimizes confusion during high-pressure situations.
 
-### ⚡ Skill Injection Engine
-- Generates **clear, concise instructions**  
-- Focuses on **immediate action**  
-- Optimized for high-stress situations  
+### ⚡ Fast Emergency Selection
 
----
+Users can quickly select from common emergency scenarios and receive relevant guidance immediately.
 
-### 🔄 Adaptive Guidance System
-- Adjusts instructions based on:
-  - User hesitation  
-  - Panic signals  
-  - Response timing  
+## How It Works
 
-**Example:**
-User: "I don’t know what to do"
-→ System simplifies instructions further
+1. Open Reflexa during an emergency.
+2. Describe the situation using voice input or select an emergency manually.
+3. Allow location access if needed.
+4. Receive immediate step-by-step guidance.
+5. Contact emergency services using the integrated emergency call feature if necessary.
 
-
----
-
-### 📱 Stress-Optimized UI
-- Minimal, distraction-free interface  
-- Large, readable step cards  
-- Designed for real-world emergency use  
-
----
-
-### 🔊 Voice Assistance
-- Real-time spoken instructions  
-- Enables hands-free interaction  
-
----
-
-### 📶 Offline-Ready Design (Planned / Partial)
-- Core emergency scenarios accessible offline  
-- Designed for low-connectivity environments  
-
----
-
-## 🧩 Use Case Example
-
-### Scenario: Someone Faints
-
-**User Input:**
-"Help! Someone fainted!"
-
-
-**System Response:**
-1. Check if the person is responsive  
-2. Check breathing  
-3. Call emergency services  
-4. Place them in recovery position  
-
----
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
-- React.js  
-- Tailwind CSS  
-- Framer Motion  
 
-### Backend
-- Node.js  
-- Express.js  
+- React
+- TypeScript
+- Tailwind CSS
 
-### AI & Processing
-- OpenAI API  
+### Features
 
-### APIs & Browser Features
-- Web Speech API (Speech Recognition)  
-- Speech Synthesis API (Text-to-Speech)  
+- Web Speech API
+- Geolocation API
+- Camera Access API
 
----
+### Deployment
 
-## 🧪 What We’ve Built
+- Lovable
+  
+## Project Motivation
 
-- ✅ Functional voice input system  
-- ✅ Emergency detection pipeline  
-- ✅ AI-based classification system  
-- ✅ Dynamic step-by-step guidance UI  
-- ✅ Adaptive response logic (basic implementation)  
-- ✅ Multi-input system (voice + text + buttons)  
+Reflexa was built to help people respond effectively during emergencies when panic and uncertainty can delay critical action.
 
----
+The goal is to provide accessible, immediate guidance that empowers individuals to assist themselves or others until professional help arrives.
 
-## 🎯 Key Innovation
+## Future Enhancements
 
-Reflexa is not just an information system—it is an **action system**.
+- Multilingual emergency guidance
+- Offline emergency mode
+- AI-assisted emergency recognition
+- Emergency contact notifications
+- Medical profile integration
+- Wearable device support
+- Real-time emergency service integration
 
-- No prior training required  
-- Real-time guidance instead of static content  
-- Adaptive feedback loop  
-- Designed for execution under pressure  
+## Live Demo
 
----
+https://reflexa-aid.lovable.app/
 
-## 🏆 Why It Matters
+## Impact
 
-Reflexa transforms bystanders into responders.
-
-In critical situations, **every second matters**—and the right guidance at the right time can save lives.
+Reflexa promotes emergency preparedness by making life-saving information available instantly, helping users make informed decisions during critical situations.
 
 ---
 
-## 🚀 Future Scope
-
-- Default app in phones, SOS button on every Lock Screen
-- Camera-based emergency recognition  
-- Smartwatch / wearable integration  
-- Multi-language support  
-- Enhanced offline functionality
-
+**From panic to action in seconds.**
 
 ---
 
-## 🤝 Contributors
+## Contributors
+### Team : FemTech  
 
 - **Arisha Ali - Lead**
 - **Anushka Dhawan**
 - **Ishita Tayal**
-- **Sidra Siddiquie**
 - **Vidhi Ujjwal**
-- Team Reflexa  
 
 ---
 
